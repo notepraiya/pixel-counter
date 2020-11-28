@@ -1,3 +1,4 @@
+var path = require('path');
 var parser = require('ua-parser-js');
 
 module.exports = (req, res) => {
@@ -7,8 +8,8 @@ module.exports = (req, res) => {
     body: req.body,
     query: req.query,
     cookies: req.cookies,
-    ipr: req.connection.remoteAddress,
-    ipx: req.headers['x-forwarded-for'],
     ip: req.headers['x-forwarded-for'] || req.connection.remoteAddress,
+    dir: __dirname,
+    rootx: path.join(__dirname, '../public'),
   })
 }
